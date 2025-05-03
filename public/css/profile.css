@@ -1,0 +1,106 @@
+/* Universal Styling */
+* {
+    box-sizing: border-box;
+    font-family: "Cormorant Garamond", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #FDF6E3;
+}
+
+header {
+    background: linear-gradient(135deg, #A020F0, #4B0082);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-family: 'Cinzel Decorative', serif;
+}
+
+html { 
+    background: url('angel-background.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+    color: #FFD700;
+}
+
+.categories {
+    text-align: center;
+    padding: 40px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.category-btn {
+    background-color: #846bf5;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 50%;
+    margin-left: 75px;
+}
+
+.category-btn:hover {
+    background-color: #C3C7F7;
+    transform: scale(1.05);
+}
+a {
+    text-decoration: none; 
+}
+
+.footer {
+    background: linear-gradient(135deg, #A020F0, #4B0082);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 50px;
+}
+
+.footer-links a {
+    color: #FFD700;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #FFF;
+}

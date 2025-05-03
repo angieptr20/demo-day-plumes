@@ -1,0 +1,91 @@
+/* General Content Styling
+.content {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input.form-control,
+textarea.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input.form-control::placeholder,
+textarea.form-control::placeholder {
+    color: #999;
+}
+
+
+.add-project-btn {
+    background-color: #008cba;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-project-btn:hover {
+    background-color: #0077a3;
+}
+
+
+.lyrics-list {
+    margin-top: 30px;
+}
+
+.messages {
+    list-style: none;
+    padding: 0;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.favorite {
+    color: gold;
+}
+
+.delete-btn {
+    cursor: pointer;
+    color: red;
+}
+
+.delete-btn:hover {
+    color: darkred;
+} */
+

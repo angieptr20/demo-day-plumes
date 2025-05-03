@@ -1,0 +1,88 @@
+html{
+  background: url('white-wings.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #A020F0;
+}
+
+
+
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 40px;
+  background: rgba(208, 212, 235, 0.65);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  color: #4B0082;
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: #4B0082;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #A020F0;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #B233FF;
+  outline: none;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #A020F0, #4B0082);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #B233FF, #5D008F);
+  transform: scale(1.05);
+}
+
+a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
