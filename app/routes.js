@@ -30,8 +30,15 @@ module.exports = function(app, passport, db) {
       });
   });
 
+    // app.get('/recordings', isLoggedIn, function(req, res) {
+    //   res.render('recordings.ejs');
+    // });
+
     app.get('/recordings', isLoggedIn, function(req, res) {
-      res.render('recordings.ejs');
+        db.collection('recordings').find({ username: req.user.username }).toArray((err, recordings) => {
+            if (err) return console.log(err); 
+            res.render('recordings.ejs', { user: req.user, recordings }); // Pass recordings to EJS
+        });
     });
 
     app.get('/art', isLoggedIn, function(req, res) {
@@ -155,6 +162,92 @@ app.delete('/delete-answer', (req, res) => {
 });
 
 
+
+//RECORDINGS
+const cloudinary = require("../middleware/cloudinary");
+const upload = require("../middleware/multer");
+
+// app.get('/recordings', isLoggedIn, function(req, res) {
+//     db.collection('recordings').find({ username: req.user.username }).toArray((err, recordings) => {
+//         if (err) return console.log(err); 
+//         res.render('recordings.ejs', { user: req.user, recordings }); // Pass recordings to EJS
+//     });
+// });
+
+// app.get('/recordings', isLoggedIn, async (req, res) => {
+//     try {
+//         const recordings = await db.collection('recordings').find({ username: req.user.username }).toArray();
+//         res.render('recordings.ejs', { user: req.user, recordings }); // ✅ Pass recordings to EJS
+//     } catch (err) {
+//         console.error("Error fetching recordings:", err);
+//         res.render('recordings.ejs', { user: req.user, recordings: [] }); // ✅ Avoid undefined errors
+//     }
+// });
+
+// app.post("/recordings", upload.single("file"), async (req, res) => {
+//     try {
+//         const result = await cloudinary.uploader.upload(req.file.path, {
+//             resource_type: "auto",
+//             folder: "Plumes-Recordings"
+//         });
+
+//         await db.collection("recordings").insertOne({
+//             username: req.user.username,
+//             fileUrl: result.secure_url
+//         });
+
+//         res.redirect("/recordings");
+//     } catch (err) {
+//         res.status(500).json({ error: "Upload failed" });
+//     }
+// });
+
+
+// app.post("/recordings", upload.single("file"), async (req, res) => {
+//     try {
+//         console.log("File received:", req.file); //  Debugging step
+        
+//         const result = await cloudinary.uploader.upload(req.file.path, {
+//             resource_type: "auto",
+//             folder: "Plumes-Recordings"
+//         });
+
+//         await db.collection("recordings").insertOne({
+//             username: req.user.username,
+//             fileUrl: result.secure_url
+//         });
+
+//         res.redirect("/recordings");
+//     } catch (err) {
+//         console.error("Upload Failed:", err);
+//         res.status(500).json({ error: err.message });
+//     }
+// });
+
+
+app.post("/recordings", upload.single("file"), async (req, res) => {
+    try {
+        if (!req.file) throw new Error("No file uploaded");
+        console.log("File received:", req.file); //  Debugging step
+        
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            resource_type: "auto",
+            folder: "Plumes-Recordings"
+        });
+
+        console.log("Cloudinary response:", result); //  Debugging step
+
+        await db.collection("recordings").insertOne({
+            username: req.user.username,
+            fileUrl: result.secure_url
+        });
+
+        res.redirect("/recordings");
+    } catch (err) {
+        console.error("Upload Failed:", err);
+        res.status(500).json({ error: err.message }); //  Show exact error message
+    }
+});
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
 // =============================================================================

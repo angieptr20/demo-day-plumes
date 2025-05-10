@@ -19,6 +19,8 @@ var configDB = require('./config/database.js');
 
 var db
 
+require("dotenv").config(); //  Load environment variables
+
 // configuration ===============================================================
 mongoose.connect(configDB.url, (err, database) => {
   if (err) return console.log(err)

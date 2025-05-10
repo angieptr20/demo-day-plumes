@@ -15,9 +15,9 @@
         <h2><i class="fa-solid fa-music"></i> Plumes</h2>
         <nav>
             <ul>
-                <li><a href="/index">Home</a></li>
-                <li><a href="/song-lyrics">Song lyrics</a></li>
-                <li><a href="/art">Art</a></li>
+                <a href="/"></a><li>Home</li></a>
+                <a href="/song-lyrics"><li>Song lyrics</li></a>
+                <a href="/art"><li>Art</li></a>
             </ul>
         </nav>
     </header>
@@ -26,8 +26,21 @@
         <section class="content">
             <h1>Recordings</h1>
             <p>Upload and store your musical recordings here.</p>
-            <button class="add-project-btn"><span class="plus-icon">➕</span> Add Recording</button>
+            <form action="/recordings" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept="audio/*,image/*" required>
+                <button type="submit">Upload</button>
+            </form>    
+            <!-- <button class="add-project-btn"><span class="plus-icon">➕</span> Add Recording</button> -->
         </section>
+        <ul>
+            <% for (var i = 0; i < recordings.length; i++) { %>
+                <li>
+                    <audio controls>
+                        <source src="<%= recordings[i].fileUrl %>" type="audio/mp4"> <!--type="audio/mp3"-->
+                    </audio>
+                </li>
+            <% } %>
+        </ul>
     </main>
 </body>
 </html>
