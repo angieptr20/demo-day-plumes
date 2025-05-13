@@ -1,3 +1,7 @@
+const cloudinary = require("../middleware/cloudinary");
+const { uploadArtwork, uploadRecording } = require("../middleware/multer");
+
+
 module.exports = function(app, passport, db) {
 
 // normal routes ===============================================================
@@ -12,7 +16,7 @@ module.exports = function(app, passport, db) {
         db.collection('creations').find().toArray((err, result) => { //grabs value from database and stores in result
           if (err) return console.log(err) //error checking
             // console.log(result)
-          res.render('profile.ejs', { //rendering res to browser => creating object to send to ejs
+          res.render('profile.ejs', { //rendering res to browser => creating object to send to ejs (views)
             user : req.user, 
             creations: result 
           })
@@ -30,10 +34,6 @@ module.exports = function(app, passport, db) {
       });
   });
 
-    // app.get('/recordings', isLoggedIn, function(req, res) {
-    //   res.render('recordings.ejs');
-    // });
-
     app.get('/recordings', isLoggedIn, function(req, res) {
         db.collection('recordings').find({ username: req.user.username }).toArray((err, recordings) => {
             if (err) return console.log(err); 
@@ -42,9 +42,21 @@ module.exports = function(app, passport, db) {
     });
 
     app.get('/art', isLoggedIn, function(req, res) {
-      res.render('art.ejs');
+        db.collection('artworks').find({ username: req.user.username }).toArray((err, artworks) => {
+            if (err) return console.log(err);
+            res.render('art.ejs', { user: req.user, artworks }); // Pass artworks & user to EJS
+        });
     });
 
+
+    /*NOTE:
+    If your route name is /gallery but your EJS file is art.ejs, the GET request would look like:
+    app.get("/gallery", isLoggedIn, function (req, res) {
+        res.render("art.ejs", { user: req.user, artworks });
+    });
+
+    This works, but I’d have to make sure any links go to /gallery instead of /art
+    */
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -54,7 +66,7 @@ module.exports = function(app, passport, db) {
         res.redirect('/');
     });
 
-    // Submit new song lyrics
+    // SUBMIT NEW SONG LYRICS ==============================
     app.post('/add-lyrics', (req, res) => {
       db.collection('song-lyrics').insertOne(
           { 
@@ -71,22 +83,6 @@ module.exports = function(app, passport, db) {
           }
         );
     });
-
-    // app.put('/update-favorite', (req, res) => {
-    //   db.collection('song-lyrics')
-    //     .findOneAndUpdate(
-    //       { 
-    //         username: req.user.username, 
-    //         title: req.body.title,
-    //        },
-    //       { $set: { favorite: true } }, // Increment 
-    //       { sort: { _id: -1 }, upsert: true },
-    //       (err, result) => {
-    //         if (err) return res.send(err);
-    //         res.send(result);
-    //       }
-    //     );
-    // });
 
     // app.put('/update-favorite', (req, res) => {
     //   db.collection('song-lyrics')
@@ -120,6 +116,8 @@ module.exports = function(app, passport, db) {
     //       });
     // });
 
+
+    //ACTUAL WORKING ONE
     app.put('/update-favorite', (req, res) => {
       db.collection('song-lyrics')
           .findOne({ title: req.body.title })
@@ -128,7 +126,7 @@ module.exports = function(app, passport, db) {
               console.log(song)
               db.collection('song-lyrics').findOneAndUpdate(
                   { title: req.body.title },
-                  { $set: { favorite: song.favorite ? false : true } }, // Proper toggle logic
+                  { $set: { favorite: song.favorite ? false : true } }, // toggle logic
                   { returnDocument: "after" },
                   (err, result) => {
                       if (err) return res.send(err);
@@ -136,23 +134,71 @@ module.exports = function(app, passport, db) {
                   }
               );
           });
+    });
+
+
+    app.delete('/delete-song', (req, res) => {
+        db.collection('song-lyrics').findOneAndDelete(
+            { title: req.body.title },
+            (err, result) => {
+                if (err) return res.send(500, err);
+                res.send("Song deleted!");
+            }
+        );
+    });
+
+
+    //SUBMIT SONG RECORDINGS
+// const cloudinary = require("../middleware/cloudinary");  //TOP OF PAGE
+// const { uploadArtwork, uploadRecording } = require("../middleware/multer"); //TOP PF PAGE
+
+app.post("/recordings", uploadRecording.single("file"), async (req, res) => {
+    try {
+        if (!req.file) throw new Error("No file uploaded");
+        console.log("File received:", req.file); //  Debugging step
+        
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            resource_type: "auto",
+            folder: "Plumes-Recordings"
+        });
+
+        console.log("Cloudinary response:", result, ); //  Debugging
+
+        await db.collection("recordings").insertOne({
+            username: req.user.username,
+            title: req.body.title,
+            fileUrl: result.secure_url,
+            favorite: false 
+        });
+
+        res.redirect("/recordings");
+    } catch (err) {
+        console.error("Upload Failed:", err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
+app.put('/update-favorite-recording', (req, res) => {
+    db.collection('recordings')
+        .findOne({ title: req.body.title })
+        .then(recording => {
+            if (!recording) return res.send("Recording not found!");
+            console.log(recording)
+            db.collection('recordings').findOneAndUpdate(
+                { title: req.body.title },
+                { $set: { favorite: recording.favorite ? false : true } }, // toggle logic
+                { returnDocument: "after" },
+                (err, result) => {
+                    if (err) return res.send(err);
+                    res.send(result);
+                }
+            );
+        });
   });
 
-//   app.put('/update-favorite', (req, res) => {
-//     db.collection('song-lyrics')
-//         .findOneAndUpdate(
-//             { title: req.body.title },
-//             { $set: { favorite: true } },
-//             { sort: { _id: -1 }, upsert: true },
-//             (err, result) => {
-//                 if (err) return res.send(err);
-//                 res.send(result);
-//             }
-//         );
-// });
-
-app.delete('/delete-answer', (req, res) => {
-    db.collection('song-lyrics').findOneAndDelete(
+  app.delete('/delete-recording', (req, res) => {
+    db.collection('recordings').findOneAndDelete(
         { title: req.body.title },
         (err, result) => {
             if (err) return res.send(500, err);
@@ -163,91 +209,61 @@ app.delete('/delete-answer', (req, res) => {
 
 
 
-//RECORDINGS
-const cloudinary = require("../middleware/cloudinary");
-const upload = require("../middleware/multer");
+    //ARTWORK
+    app.post("/artworks", uploadArtwork.single("image"), async (req, res) => {
+        try {
+            if (!req.file) throw new Error("No image uploaded");
+            console.log("File received:", req.file); //  Debugging step
+            
+            const result = await cloudinary.uploader.upload(req.file.path, {
+                resource_type: "image",
+                folder: "Plumes-Artworks"
+            });
+    
+            console.log("Cloudinary response:", result); //  Debugging
+    
+            await db.collection("artworks").insertOne({
+                username: req.user.username,
+                title: req.body.title,
+                imageUrl: result.secure_url, // Cloudinary image URL
+                favorite: false
+            });
+    
+            res.redirect("/art");
+        } catch (err) {
+            console.error("Upload Failed:", err);
+            res.status(500).json({ error: err.message });
+        }
+    });
 
-// app.get('/recordings', isLoggedIn, function(req, res) {
-//     db.collection('recordings').find({ username: req.user.username }).toArray((err, recordings) => {
-//         if (err) return console.log(err); 
-//         res.render('recordings.ejs', { user: req.user, recordings }); // Pass recordings to EJS
-//     });
-// });
+    app.put("/update-favorite-artwork", (req, res) => {
+        db.collection("artworks")
+            .findOne({ title: req.body.title })
+            .then(artwork => {
+                if (!artwork) return res.send("Artwork not found!");
+                console.log(artwork);
+                db.collection("artworks").findOneAndUpdate(
+                    { title: req.body.title },
+                    { $set: { favorite: artwork.favorite ? false : true } }, // toggle logic
+                    { returnDocument: "after" },
+                    (err, result) => {
+                        if (err) return res.send(err);
+                        res.send(result);
+                    }
+                );
+            });
+    });
 
-// app.get('/recordings', isLoggedIn, async (req, res) => {
-//     try {
-//         const recordings = await db.collection('recordings').find({ username: req.user.username }).toArray();
-//         res.render('recordings.ejs', { user: req.user, recordings }); // ✅ Pass recordings to EJS
-//     } catch (err) {
-//         console.error("Error fetching recordings:", err);
-//         res.render('recordings.ejs', { user: req.user, recordings: [] }); // ✅ Avoid undefined errors
-//     }
-// });
+    app.delete("/delete-artwork", (req, res) => {
+        db.collection("artworks").findOneAndDelete(
+            { title: req.body.title },
+            (err, result) => {
+                if (err) return res.send(500, err);
+                res.send("Artwork deleted!");
+            }
+        );
+    });
 
-// app.post("/recordings", upload.single("file"), async (req, res) => {
-//     try {
-//         const result = await cloudinary.uploader.upload(req.file.path, {
-//             resource_type: "auto",
-//             folder: "Plumes-Recordings"
-//         });
-
-//         await db.collection("recordings").insertOne({
-//             username: req.user.username,
-//             fileUrl: result.secure_url
-//         });
-
-//         res.redirect("/recordings");
-//     } catch (err) {
-//         res.status(500).json({ error: "Upload failed" });
-//     }
-// });
-
-
-// app.post("/recordings", upload.single("file"), async (req, res) => {
-//     try {
-//         console.log("File received:", req.file); //  Debugging step
-        
-//         const result = await cloudinary.uploader.upload(req.file.path, {
-//             resource_type: "auto",
-//             folder: "Plumes-Recordings"
-//         });
-
-//         await db.collection("recordings").insertOne({
-//             username: req.user.username,
-//             fileUrl: result.secure_url
-//         });
-
-//         res.redirect("/recordings");
-//     } catch (err) {
-//         console.error("Upload Failed:", err);
-//         res.status(500).json({ error: err.message });
-//     }
-// });
-
-
-app.post("/recordings", upload.single("file"), async (req, res) => {
-    try {
-        if (!req.file) throw new Error("No file uploaded");
-        console.log("File received:", req.file); //  Debugging step
-        
-        const result = await cloudinary.uploader.upload(req.file.path, {
-            resource_type: "auto",
-            folder: "Plumes-Recordings"
-        });
-
-        console.log("Cloudinary response:", result); //  Debugging step
-
-        await db.collection("recordings").insertOne({
-            username: req.user.username,
-            fileUrl: result.secure_url
-        });
-
-        res.redirect("/recordings");
-    } catch (err) {
-        console.error("Upload Failed:", err);
-        res.status(500).json({ error: err.message }); //  Show exact error message
-    }
-});
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
 // =============================================================================

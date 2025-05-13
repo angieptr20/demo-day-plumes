@@ -9,3 +9,7 @@ cloudinary.config({
 });
 
 module.exports = cloudinary;
+
+console.log("Cloud Name:", process.env.CLOUD_NAME);
+console.log("API Key:", process.env.API_KEY);
+console.log("API Secret:", process.env.API_SECRET);

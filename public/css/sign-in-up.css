@@ -8,14 +8,17 @@ body{
 }
 
 .logo {
-  font-size: 1.7rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
+  /* color: #FDF6E3; */
   color: #A020F0;
+  padding-left: 5px;
 }
 
-.login-container {
+.container {
   max-width: 400px;
   margin: 40px auto;
   padding: 40px;
@@ -28,7 +31,8 @@ body{
 h1 {
   font-family: 'Cinzel Decorative', serif;
   color: #4B0082;
-  font-size: 28px;
+  font-size: 1.3rem;
+  font-weight: 600;
   margin-bottom: 25px;
 }
 
@@ -38,7 +42,7 @@ h1 {
 
 .form-group label {
   font-family: 'Poppins', sans-serif;
-  font-weight: bold;
+  font-weight: 550;
   color: #4B0082;
   display: block;
   margin-bottom: 5px;
@@ -49,7 +53,7 @@ h1 {
   padding: 12px;
   border-radius: 8px;
   border: 2px solid #A020F0;
-  font-size: 16px;
+  font-size: 1rem;
   transition: border-color 0.3s ease;
 }
 
@@ -58,11 +62,12 @@ h1 {
   outline: none;
 }
 
-.login-btn {
+button {
   background: linear-gradient(135deg, #A020F0, #4B0082);
   color: white;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif; 
+  font-weight: 400;
   border: none;
   padding: 12px 20px;
   border-radius: 10px;
@@ -70,7 +75,7 @@ h1 {
   transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
-.login-btn:hover {
+button:hover {
   background: linear-gradient(135deg, #B233FF, #5D008F);
   transform: scale(1.05);
 }

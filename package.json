@@ -28,6 +28,10 @@
     "passport-facebook": "~2.1.1",
     "passport-google-oauth": "~1.0.0",
     "passport-local": "~1.0.0",
-    "passport-twitter": "^0.1.5"
+    "passport-twitter": "^0.1.5",
+    "tailwind": "^4.0.0"
+  },
+  "devDependencies": {
+    "daisyui": "^5.0.35"
   }
 }

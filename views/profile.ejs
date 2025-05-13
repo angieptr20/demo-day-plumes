@@ -9,48 +9,37 @@
         <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link rel="stylesheet" href="css/styles.css">
-        <!-- <link rel="stylesheet" href="css/profile.css"> -->
+        <!-- <link rel="stylesheet" href="css/styles.css"> -->
+        <link rel="stylesheet" href="css/profile.css">
 
     </head>
     <body>
         <header>
             <h2 class="logo"><i class="fa-solid fa-feather"></i> Plumes</h2>
             <nav>
-                <ul>
-                    <!-- <li>images</li>
-                    <li>lyrics</li>
-                    <li>recordings/melodies</li>
-                    <li>script ideas</li>
-                    <li>upload</li>
-                    <li>concepts</li>
-                    <li>projects</li> -->
+                <ul class="nav-links">
+                    <li>Hello, User</li>
                     <li><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
                 </ul>
             </nav>
         </header>
         <main>
              <section class="categories">
-                <h2>Explore Your Creativity</h2>
-                <div class="quote-container">
-                    <div>
-                        <p class="quote">"Art is the lie that enables us to realize the truth."</p>
-                        <p class="quote-author">— Pablo Picasso</p>
+                <section class="pick">
+                    <div class="app-summary">
+                        <h1>Ready to explore?</h1>
+                        <p>Finding what you need is simple. <br>Just pick a category and get started—no<br>barriers, no confusion, just pure discovery!</p>
+                        <div class="category-grid">
+                            <a href="/song-lyrics"><button class="category-btn lyrics"><i class="fa-solid fa-pencil-alt"></i> Lyrics</button></a>
+                            <a href="/recordings"><button class="category-btn melodies"><i class="fa-solid fa-microphone"></i> Recordings</button></a>
+                            <a href="/art"><button class="category-btn art"><i class="fa-solid fa-image"></i> Artwork</button></a>
+                        </div> 
                     </div>
-                </div>
-                <div class="category-grid">
-                    <a href="/song-lyrics"><button class="category-btn lyrics">🎶 Add Lyrics</button></a>
-                    <a href="/recordings"><button class="category-btn melodies">🎤 Upload Recording</button></a>
-                    <!-- <button class="category-btn inspiration">Inspiration</button> -->
-                    <a href="/art"><button class="category-btn art">🎨 Upload Artwork</button></a>
-                    <!-- <button class="category-btn poetry">Poetry</button>
-                    <button class="category-btn scripts">Scripts</button>
-                    <button class="category-btn all">All</button> -->
-                </div> 
+                    <div class="flowers">
+                        <img src="/img/more-flowers.png" alt=""> 
+                    </div>    
+                </section>
             </section>
-            <!-- <button class="add-project-btn">
-                <span class="plus-icon">➕</span> Add Project
-            </button> -->
         </main>
         <footer class="footer">
             <div class="footer-content">

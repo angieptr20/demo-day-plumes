@@ -1,4 +1,6 @@
-// server.js
+require("dotenv").config(); //  Load environment variables
+
+// require("dotenv").config({ path: "./config/.env" });
 
 // set up ======================================================================
 // get all the tools we need
@@ -18,8 +20,6 @@ var session      = require('express-session');
 var configDB = require('./config/database.js');
 
 var db
-
-require("dotenv").config(); //  Load environment variables
 
 // configuration ===============================================================
 mongoose.connect(configDB.url, (err, database) => {

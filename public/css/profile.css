@@ -1,4 +1,3 @@
-/* Universal Styling */
 * {
     box-sizing: border-box;
     font-family: "Cormorant Garamond", serif;
@@ -9,6 +8,7 @@
 
 header {
     background: linear-gradient(135deg, #A020F0, #4B0082);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -17,12 +17,52 @@ header {
     font-family: 'Cinzel Decorative', serif;
 }
 
-html { 
-    background: url('angel-background.png') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+h1{
+    font-weight: 900;
+    font-size: 4.5rem;
+    line-height: 1.5;  
+    color: #320a44;
+    margin: 0px 0px;
+    padding: 50px 25px;
+    /* width: 55%; */
+  }
+
+.pick{
+    display: flex;
+    margin: 0px 0px;
+}
+
+.flowers{
+    width: 40%;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.about{
+    display:flex;
+    justify-content: center;
+}
+
+.app-summary {
+    background: rgba(218, 223, 247, 0.95); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 60%;
+    height: 100vh;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.35rem;
+    color: #4B0082;
+    max-width: 85%;
+    margin: 20px auto;
+    text-align: center; 
 }
 
 .logo {
@@ -38,7 +78,7 @@ html {
     gap: 20px;
 }
 
-.nav-links li a {
+.nav-links li a, li {
     text-decoration: none;
     color: white;
     font-size: 18px;
@@ -52,37 +92,57 @@ html {
 
 .categories {
     text-align: center;
-    padding: 40px;
 }
 
 .category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    display: flex; 
+    gap: 20px; 
     justify-content: center;
+    align-items: center;
+    padding: 40px; 
+    margin: 50px;
 }
 
 .category-btn {
-    background-color: #846bf5;
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 18px; 
+    font-weight: bold; 
+    padding: 15px 25px;
     border: none;
-    padding: 15px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    width: 50%;
-    margin-left: 75px;
+    transition: all 0.3s ease-in-out;
+    display: flex; 
+    align-items: center;
+    gap: 10px;
+}
+
+.category-btn i {
+    font-size: 22px; 
+}
+
+.lyrics {
+    background: linear-gradient(135deg, #FFA07A, #FF4500);
+    color: white;
+}
+
+.melodies {
+    background: linear-gradient(135deg, #7B68EE, #4B0082); 
+    color: white;
+}
+
+.art {
+    background: linear-gradient(135deg, #48D1CC, #008080); 
+    color: white;
 }
 
 .category-btn:hover {
-    background-color: #C3C7F7;
     transform: scale(1.05);
+    opacity: 0.9;
 }
+
 a {
     text-decoration: none; 
-}
+}    
 
 .footer {
     background: linear-gradient(135deg, #A020F0, #4B0082);
@@ -90,7 +150,7 @@ a {
     padding: 20px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    margin-top: 50px;
+    margin-top: 5px;
 }
 
 .footer-links a {

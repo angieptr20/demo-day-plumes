@@ -77,6 +77,7 @@ p:first-of-type {
     border-left: 5px solid #A020F0; 
 }
 
+
 form {
     display: flex;
     flex-direction: column;
@@ -135,7 +136,7 @@ form {
     transform: scale(1.05);
 }
 
-.lyrics-list {
+.uploads-list {
     max-width: 800px;
     margin: 50px auto;
     padding: 30px;
@@ -152,7 +153,7 @@ form {
     gap: 15px;
 }
 
-.message {
+/* .message {
     background: rgba(240, 240, 250, 0.85);
     padding: 18px;
     border-radius: 10px;
@@ -165,14 +166,34 @@ form {
     font-family: 'Cormorant Garamond', serif; 
 }
 
+
 .message p {
     font-size: 20px;
     font-weight: bold;
     color: #4B0082;
     border-left: 5px solid #A020F0; 
     padding-left: 12px;
+} */
+
+.message {
+    display: flex;
+    flex-direction: column; /* ✅ Ensures title sits above audio */
+    align-items: flex-start; /* ✅ Keeps alignment clean */
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(240, 240, 250, 0.85);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
 }
 
+/* 🎶 Recording Title Styling */
+.message p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4B0082;
+    padding-bottom: 5px;
+    margin-bottom: 8px; /* ✅ Creates space between title & audio */
+}
 
 .message span {
     font-size: 17px;
@@ -219,4 +240,8 @@ h3 {
     padding-bottom: 8px; 
     margin-bottom: 20px; 
     letter-spacing: 1px;
+}
+
+img{
+    max-width: 90%;
 }

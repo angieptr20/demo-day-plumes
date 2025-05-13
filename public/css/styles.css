@@ -1,3 +1,7 @@
+/* @import "tailwindcss";
+@plugin "daisyui"; */
+
+
 *{
     box-sizing: border-box;
     font-family: "Cormorant Garamond", serif;
@@ -8,7 +12,8 @@
 }
 
 header {
-    background: linear-gradient(135deg, #A020F0, #4B0082); /* Stylish purple gradient */
+    background: linear-gradient(135deg, #A020F0, #4B0082);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -17,6 +22,14 @@ header {
     font-family: 'Cinzel Decorative', serif;
 }
 
+main{
+    background: linear-gradient(135deg, #add8e6, #d8b2ff, #ffb6c1);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.6);
+}
 
 .logo {
     font-size: 1.5rem;
@@ -29,6 +42,7 @@ header {
     list-style: none;
     display: flex;
     gap: 20px;
+    
 }
 
 .nav-links li a {
@@ -53,45 +67,47 @@ header {
     background: rgba(218, 223, 247, 0.95); 
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    max-width: 60%;  
+    max-width: 60%;
+    margin: 85px 0px;  
 }
 
 p {
-    /* background: rgba(218, 223, 247, 0.95);  */
     font-family: 'Poppins', sans-serif;
     font-size: 1.35rem;
     color: #4B0082;
     max-width: 85%;
     margin: auto;
-    text-align: center; /* Ensures clean text alignment */
-    
-
+    text-align: center; 
 }
 
 h3 {
-    font-family: 'Cinzel Decorative', serif;
-    color: #4B0082;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-family: "Cormorant Garamond", serif;
+    color: #320a44;
+    font-weight: 600;
+    font-size: 4rem;
+    margin: 70px 0px;
     text-align: center;
+    letter-spacing: 5px;
 }
 
-html { 
-    background: url('angel-background.png') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.intro{display: flex;
 }
 
 h1{
   font-weight: 900;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   line-height: 1.5;  
-  color: white; /*#846bf5;*/
+  color: #320a44;
+  margin: 0px 0px;
+  padding: 90px 35px;
+  width: 55%;
 }
 
-.add-project-btn {
+.colors{
+    width: 45%;
+}
+
+/* .add-project-btn {
     background-color: #A020F0;
     color: white;
     font-size: 18px;
@@ -109,21 +125,28 @@ h1{
 .add-project-btn:hover {
     background-color: #B233FF;
     transform: scale(1.05);
-}
+} */
 
-/* .categories {
+.categories {
     text-align: center;
     padding: 40px;
-    background: linear-gradient(135deg, #A020F0, #4B0082); /
     color: white;
     font-family: 'Cinzel Decorative', serif;
-} */
+    background: url('angel-background.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 10px 0px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.6);
+}
 
 .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .category {
@@ -150,20 +173,6 @@ h1{
     margin-bottom: 10px;
 }
 
-/* .category-btn {
-    background-color: #846bf5; 
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    width: 70%;
-    margin-left: 55px;
-} */
-
 .category-btn {
     background-color: #846bf5;
     color: white;
@@ -183,69 +192,7 @@ h1{
     transform: scale(1.05);
 } 
 
-/* .lyrics{
-    margin-left: 30px;
-} */
-
-.favorite {
-    /* color: gold; */
-    background-color: red;
-}
-
 /* FOOTER */
-
-/* .footer {
-    background: linear-gradient(135deg, #A020F0, #4B0082); 
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 50px;
-}
-
-.footer p{
-    font-size: 1.2rem;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-links {
-    margin-top: 10px;
-}
-
-.footer-links a {
-    color: #FFD700; 
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1rem;
-    transition: color 0.3s ease-in-out;
-}
-
-.footer-links a:hover {
-    color: #FFF;
-} */
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-family: 'Poppins', sans-serif;
-    transition: color 0.3s ease-in-out;
-}
-
-.nav-links li a:hover {
-    color: #FFD700;
-}
 
 .footer {
     background: linear-gradient(135deg, #A020F0, #4B0082);
@@ -253,7 +200,6 @@ h1{
     padding: 20px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    margin-top: 70px;
 }
 
 .footer-links a {
@@ -274,9 +220,12 @@ a {
 
 li {
     list-style-type: none;
+    /* border: 1px solid gray; */
+    border-radius: 5px;
+    padding: 5px 10px;
 }
 
-.quote-container {
+/* .quote-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -298,5 +247,12 @@ li {
     color: #f85b5b;
     margin-top: 30px;
     margin-bottom: 50px;
+} */
 
-}
+
+
+
+
+
+
+
