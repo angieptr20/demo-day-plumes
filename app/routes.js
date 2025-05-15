@@ -13,12 +13,12 @@ module.exports = function(app, passport, db) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('creations').find().toArray((err, result) => { //grabs value from database and stores in result
+        db.collection('users').find().toArray((err, result) => { //grabs value from database and stores in result
           if (err) return console.log(err) //error checking
             // console.log(result)
           res.render('profile.ejs', { //rendering res to browser => creating object to send to ejs (views)
             user : req.user, 
-            creations: result 
+            profile: result 
           })
         })
     });

@@ -22,37 +22,41 @@
         </nav>
     </header>
     <main>
+        <div class="image-holder">
+            <img src="/img/face.png" alt="face art" class="img">
+            <p>"Art is the silent language of the soul—where colors speak, shapes sing, and every creation tells a story only the heart can hear."</p>
+        </div>
         <section class="content">
-            <h1>Art</h1>
-            <p>Store and showcase your artistic creations related to your projects.</p>
+            <p>Artwork</p>
             <form action="/artworks" method="POST" enctype="multipart/form-data">
                 <input type="hidden" id="userEmail" value="<%= user.username %>">
                 <input type="file" name="image" accept="image/*" required>
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" class="form-control" required>
+                    <input type="text" id="title" name="title" class="form-control title" required>
                 </div>
                 <button class="add-project-btn" type="submit"><span class="plus-icon">➕</span> Add Artwork</button>
             </form> 
         </section>
+    </main>
+    <section class="uploads-content">    
         <section class="uploads-list">
-            <h3>(Highlight Your Favorites)</h3>
             <ul class="messages"> 
             <% for (var i = 0; i < artworks.length; i++) { %>
                 <li class="message">
                     <p><%= artworks[i].title %></p>
-                    <img src="<%= artworks[i].imageUrl %>" alt="<%= artworks[i].title %>">
+                    <img src="<%= artworks[i].imageUrl %>" alt="<%= artworks[i].title %>" class="images">
                     <span>
                         <i class="fa fa-star star3 <%= artworks[i].favorite ? 'favorite' : '' %>" aria-hidden="true"></i>
                     </span>
                     <span>
-                        <i class="fa-solid fa-trash trash3" aria-hidden="true"></i>
+                        <i class="fa-solid fa-trash trash3" aria-hidden="true"><span> Delete</span></i>
                     </span>
                 </li>
             <% } %>
             </ul>
         </section>    
-    </main>
+    </section>
     <script src="main.js"></script>
 </body>
 </html>

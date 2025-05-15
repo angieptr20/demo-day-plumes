@@ -24,23 +24,27 @@
         </nav>
     </header>
     <main>
+        <div class="image-holder">
+            <img src="/img/people.webp" alt="">
+            <p>"Lyrics are more than words—they are echoes of emotions, woven into melodies that live beyond the moment."</p>
+        </div>
         <section class="content">
-            <h1>Song Lyrics</h1>
-            <p>Write, store, and refine your song lyrics here.</p>
+            <p>Songs Lyrics</p>
             <form action="/add-lyrics" method="POST">
                 <input type="hidden" id="userEmail" value="<%= user.username %>">
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" class="form-control" required>
+                    <input type="text" id="title" name="title" class="form-control title" required>
                 </div>
                 <div class="form-group">
                     <label for="lyrics">Lyrics:</label>
-                    <textarea id="lyrics" name="lyrics" class="form-control" rows="5" required></textarea>                </div>
+                    <textarea id="lyrics" name="lyrics" class="form-control lyrics-label" rows="5" required></textarea>                </div>
                 <button class="add-project-btn"><span class="plus-icon">➕</span> Add Lyrics</button>
             </form>
         </section>
+    </main>
+    <section class="lyrics-content">    
         <section class="lyrics-list">
-        <h3>(Highlight Your Favorites)</h3>
             <ul class="messages">
             <% for (var i = 0; i < songs.length; i++) { %>
                 <li class="message">
@@ -50,13 +54,13 @@
                         <i class="fa fa-star <%= songs[i].favorite ? 'favorite' : '' %>" aria-hidden="true"></i>
                     </span>
                     <span class="delete-btn">
-                        <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                        <i class="fa-solid fa-trash" aria-hidden="true"><span> Delete</span></i>
                     </span>
                 </li>
             <% } %>
             </ul>
         </section>
-    </main>    
+    </section>    
     <script src="main.js"></script>
 </body>
 </html>

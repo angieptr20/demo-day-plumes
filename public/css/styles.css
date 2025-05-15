@@ -24,11 +24,8 @@ header {
 
 main{
     background: linear-gradient(135deg, #add8e6, #d8b2ff, #ffb6c1);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.6);
+    position: relative;
+    margin: 0px 0px;
 }
 
 .logo {
@@ -45,7 +42,7 @@ main{
     
 }
 
-.nav-links li a {
+.nav-links li a, li {
     text-decoration: none;
     color: white;
     font-size: 18px;
@@ -60,6 +57,7 @@ main{
 .about{
     display:flex;
     justify-content: center;
+    margin: 0px 0px;
 }
 
 .app-summary {
@@ -68,7 +66,7 @@ main{
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     max-width: 60%;
-    margin: 85px 0px;  
+    margin: 130px 0px;  
 }
 
 p {
@@ -78,6 +76,18 @@ p {
     max-width: 85%;
     margin: auto;
     text-align: center; 
+}
+
+.app-summary p span {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #A020F0; 
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.app-summary p span:hover {
+    color: #FFD700; 
+    transform: scale(1.05);
 }
 
 h3 {
@@ -90,7 +100,8 @@ h3 {
     letter-spacing: 5px;
 }
 
-.intro{display: flex;
+.intro{
+    display: flex;
 }
 
 h1{
@@ -105,65 +116,39 @@ h1{
 
 .colors{
     width: 45%;
-}
-
-/* .add-project-btn {
-    background-color: #A020F0;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.add-project-btn:hover {
-    background-color: #B233FF;
-    transform: scale(1.05);
-} */
+} 
 
 .categories {
     text-align: center;
     padding: 40px;
     color: white;
     font-family: 'Cinzel Decorative', serif;
-    background: url('angel-background.png') no-repeat center center fixed; 
+    background: url('/img/landscape.webp') no-repeat center center fixed; 
+    /* background: url('angel-background.png') no-repeat center center fixed;  */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    margin: 10px 0px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.6);
+    margin: -60px 0px;
 }
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 20px; 
     justify-content: center;
-    margin-bottom: 50px;
-}
-
-.category {
-    background-color: #846bf5; 
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
+    margin-bottom: 60px; 
+    padding: 20px;
 }
 
 .category-item {
     text-align: center;
-    padding: 15px;
-    background-color: rgba(218, 223, 247, 0.8); 
-    border-radius: 10px;
+    padding: 18px;
+    background: rgba(218, 223, 247, 0.95); 
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .category-item p {
@@ -174,32 +159,34 @@ h1{
 }
 
 .category-btn {
-    background-color: #846bf5;
+    background: #5D008F;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1rem; 
     font-weight: bold;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 16px 24px;
+    border: 0px solid transparent;
+    border-radius: 12px; 
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    width: 50%;
-    margin-left: 75px;
+    transition: background 0.3s ease-in-out, transform 0.2s, box-shadow 0.3s;
 }
 
 .category-btn:hover {
-    background-color: #C3C7F7; 
-    transform: scale(1.05);
-} 
+    background: #a547e4;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
 
-/* FOOTER */
-
-.footer {
+footer {
     background: linear-gradient(135deg, #A020F0, #4B0082);
     color: white;
     padding: 20px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
+}
+
+footer p{
+    color:#FDF6E3;
+    font-size: 1rem;
 }
 
 .footer-links a {
@@ -214,40 +201,31 @@ h1{
     color: #FFF;
 }
 
-a {
-    text-decoration: none; 
-}
-
-li {
-    list-style-type: none;
-    /* border: 1px solid gray; */
-    border-radius: 5px;
-    padding: 5px 10px;
-}
-
-/* .quote-container {
+.quote-container {
     display: flex;
-    justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 60px;
 }
 
 .quote {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 3rem;
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #FDF6E3;
-    max-width: 80%;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    color: #340e46;
+    max-width: 70%;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 120px;
 }
 
 .quote-author {
-    font-size: 2rem;
-    font-family: 'Poppins', sans-serif;
-    color: #f85b5b;
-    margin-top: 30px;
-    margin-bottom: 50px;
-} */
+    font-size: 1.4rem;
+    font-family: "Poppins", sans-serif; 
+    color: #A020F0;
+    margin-top: 15px;
+    font-weight: bold;
+    opacity: 0.8;
+}
 
 
 

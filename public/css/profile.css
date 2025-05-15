@@ -144,19 +144,23 @@ a {
     text-decoration: none; 
 }    
 
-.footer {
+footer {
     background: linear-gradient(135deg, #A020F0, #4B0082);
     color: white;
     padding: 20px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    margin-top: 5px;
+}
+
+footer p{
+    color:#FDF6E3;
+    font-size: 1rem;
 }
 
 .footer-links a {
     color: #FFD700;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0px 10px;
     font-size: 1rem;
     transition: color 0.3s ease-in-out;
 }

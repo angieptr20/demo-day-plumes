@@ -44,80 +44,99 @@ header {
 }
 
 main{
-    background: linear-gradient(135deg, #F08080, #F7E7A2, #87CEFA);
+    background: linear-gradient(135deg, #ece8e8, #ddd7bd, #b1d6ec);
     padding-top: 40px;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+.image-holder {
+    width: 30%;
+    height: 100vh;
+    padding: 80px 20px;
+}
+
+.img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover; 
+}
+
+.images{
+    max-width: 90%;
+}
+
+.image-holder p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: #4B0082;
+    font-style: italic;
+    margin-top: 30px;
+    padding: 10px 20px;   
 }
 
 .content {
-    /* max-width: 800px; */
-    max-width: 60%;
-    margin: 0px auto;
-    text-align: center;
-    padding: 40px;
-    background: rgba(218, 223, 247, 0.95);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-
-h1 {
-    font-family: 'Cinzel Decorative', serif;
-    color: #4B0082;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-p:first-of-type {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; 
-    color: #ae91c4;  
-    text-align: center;
-    font-style: italic; 
-    padding: 10px 20px;
-    border-left: 5px solid #A020F0; 
-}
-
-
-form {
+    width: 55%;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px; 
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    border-radius: 12px;
+    background: rgb(247, 240, 240);   
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 }
 
-.form-group {
-    width: 100%;
-    max-width: 500px;
-    text-align: left;
+
+.content p:first-of-type {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #4B0082;
+    font-style: italic;
+    padding: 12px 20px;
+    border-bottom: 3px solid #A020F0;
+    border-radius: 4px;
+    align-self: center;
+}
+
+.form-control {
+    width: 170%;
+    padding: 14px;
+    color: #4B0082;
+    border-radius: 10px;
+    border: 1.5px solid #A020F0;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    border: 2px solid #331a64;
+    box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
+    outline: none;
 }
 
 .form-group label {
     font-family: 'Poppins', sans-serif;
-    font-weight: bold;
+    font-weight: 400;
+    font-size: 1rem;
     color: #4B0082;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.form-control {
-    width: 100%;
-    padding: 12px;
-    color: #4B0082;
-    border-radius: 8px;
-    border: 2px solid #A020F0;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+/* .title{
+    width: 80%
 }
 
-.form-control:focus {
-    border-color: #B233FF;
-    outline: none;
+.lyrics-label{
+    height: 20vw;
 }
-
-::placeholder {
-    color: #888; 
-    font-style: italic;
-}
+*/
 
 .add-project-btn {
     background: linear-gradient(135deg, #A020F0, #4B0082);
@@ -125,7 +144,7 @@ form {
     font-size: 18px;
     font-weight: bold;
     border: none;
-    padding: 12px 20px;
+    padding: 12px 22px;
     border-radius: 10px;
     cursor: pointer;
     transition: background 0.3s ease-in-out, transform 0.2s;
@@ -133,14 +152,54 @@ form {
 
 .add-project-btn:hover {
     background: linear-gradient(135deg, #B233FF, #5D008F);
+    transform: scale(1.07);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+input[type="file"] {
+    display: block;
+    background: #846bf5;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;    
+    font-size: 0.8rem; 
+    padding: 14px;
+    margin-left: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); 
+}
+
+input[type="file"]:hover,
+input[type="file"]:focus {
+    background: #a609c5;
     transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35); 
+}
+
+.uploads-content{
+    background: url('/img/mountains.webp') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 30px;
 }
 
 .uploads-list {
-    max-width: 800px;
-    margin: 50px auto;
+    max-width: 60%;
+    margin: 0px auto;
     padding: 30px;
-    background: rgba(208, 212, 235, 0.65); 
+    background: rgb(247, 240, 240, 0.7);   
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -153,7 +212,7 @@ form {
     gap: 15px;
 }
 
-/* .message {
+.message {
     background: rgba(240, 240, 250, 0.85);
     padding: 18px;
     border-radius: 10px;
@@ -166,34 +225,14 @@ form {
     font-family: 'Cormorant Garamond', serif; 
 }
 
-
 .message p {
     font-size: 20px;
     font-weight: bold;
     color: #4B0082;
     border-left: 5px solid #A020F0; 
     padding-left: 12px;
-} */
-
-.message {
-    display: flex;
-    flex-direction: column; /* ✅ Ensures title sits above audio */
-    align-items: flex-start; /* ✅ Keeps alignment clean */
-    padding: 15px;
-    border-radius: 8px;
-    background: rgba(240, 240, 250, 0.85);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-    margin-bottom: 10px;
 }
 
-/* 🎶 Recording Title Styling */
-.message p {
-    font-size: 20px;
-    font-weight: bold;
-    color: #4B0082;
-    padding-bottom: 5px;
-    margin-bottom: 8px; /* ✅ Creates space between title & audio */
-}
 
 .message span {
     font-size: 17px;
@@ -213,35 +252,25 @@ form {
 .favorite {
     color: gold;
     cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
 .favorite:hover {
     transform: scale(1.2);
+    transition: transform 0.2s ease;
+
 }
 
 .fa-trash {
     color: #572461;
     cursor: pointer;
+}
+
+.fa-trash:hover {
+    color: #8a6292;
+    transform: scale(1.05);
     transition: opacity 0.3s ease;
 }
 
 .fa-star:hover {
     opacity: 0.7;
-}
-
-h3 {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 2rem; 
-    font-weight: 400; 
-    color: #4B0082; 
-    text-align: center; 
-    border-bottom: 3px solid #A020F0;
-    padding-bottom: 8px; 
-    margin-bottom: 20px; 
-    letter-spacing: 1px;
-}
-
-img{
-    max-width: 90%;
 }
