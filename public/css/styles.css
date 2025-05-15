@@ -176,6 +176,10 @@ h1{
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
+a {
+    text-decoration: none;
+}
+
 footer {
     background: linear-gradient(135deg, #A020F0, #4B0082);
     color: white;
