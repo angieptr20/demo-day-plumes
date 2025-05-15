@@ -49,7 +49,7 @@
             <% for (var i = 0; i < songs.length; i++) { %>
                 <li class="message">
                     <p><%= songs[i].title %></p>
-                    <span><%= songs[i].lyrics %></span>
+                    <pre><%= songs[i].lyrics %></pre>
                     <span>
                         <i class="fa fa-star <%= songs[i].favorite ? 'favorite' : '' %>" aria-hidden="true"></i>
                     </span>
